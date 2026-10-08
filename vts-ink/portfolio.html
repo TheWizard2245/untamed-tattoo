@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Portfolio | VTS INK</title>
+  <meta name="description" content="Tattoo portfolio of Ben at VTS INK.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Bebas+Neue&family=Permanent+Marker&family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="underlay" aria-hidden="true"></div>
+  <div class="tags" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand-tag" href="index.html">VTS INK</a>
+    <nav>
+      <a href="portfolio.html" aria-current="page">Portfolio</a>
+      <a href="book.html">Book</a>
+    </nav>
+  </header>
+
+  <main>
+    <header class="page-head">
+      <h1>The Work</h1>
+      <p>Tap any piece to see it full size.</p>
+    </header>
+
+    <div class="gallery" id="gallery"></div>
+
+    <div class="portfolio-cta">
+      <a class="btn btn-mega" href="book.html"><span>BOOK YOUR SESSION NOW!</span></a>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Tattoo photo viewer">
+    <img id="lb-img" alt="">
+    <button class="lb-btn lb-close" id="lb-close" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous">&larr;</button>
+    <button class="lb-btn lb-next" id="lb-next" aria-label="Next">&rarr;</button>
+    <div class="lb-count" id="lb-count"></div>
+  </div>
+
+  <footer class="footer">
+    <span class="brand-tag">VTS INK</span>
+    <p class="footer-shop">Tattooing out of Untamed Tattoo &amp; Piercing<br><a href="https://www.google.com/maps/search/?api=1&query=799+South+Main+St+Bellingham+MA" target="_blank" rel="noopener">799 South Main St, Bellingham, MA</a></p>
+    <div>&copy; <span data-year></span> VTS INK<span data-instagram-wrap> &middot; <a data-instagram href="#" target="_blank" rel="noopener">Instagram</a></span></div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    (function () {
+      const count = VTS_CONFIG.portfolioCount;
+      const pad = (n) => String(n).padStart(2, "0");
+      const gallery = document.getElementById("gallery");
+      const lb = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lb-img");
+      const lbCount = document.getElementById("lb-count");
+      let current = 0;
+      let lastFocus = null;
+
+      for (let i = 1; i <= count; i++) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", `View tattoo ${i} of ${count}`);
+        b.innerHTML = `<img src="images/thumbs/${pad(i)}.jpg" alt="Tattoo by Ben, piece ${i}" loading="lazy">`;
+        b.addEventListener("click", () => open(i - 1));
+        gallery.appendChild(b);
+      }
+
+      function show(i) {
+        current = (i + count) % count;
+        lbImg.src = `images/portfolio/${pad(current + 1)}.jpg`;
+        lbImg.alt = `Tattoo by Ben, piece ${current + 1}`;
+        lbCount.textContent = `${current + 1} / ${count}`;
+      }
+      function open(i) {
+        lastFocus = document.activeElement;
+        show(i);
+        lb.classList.add("open");
+        document.body.style.overflow = "hidden";
+        document.getElementById("lb-close").focus();
+      }
+      function close() {
+        lb.classList.remove("open");
+        document.body.style.overflow = "";
+        if (lastFocus) lastFocus.focus();
+      }
+
+      document.getElementById("lb-close").onclick = close;
+      document.getElementById("lb-prev").onclick = () => show(current - 1);
+      document.getElementById("lb-next").onclick = () => show(current + 1);
+      lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
+      document.addEventListener("keydown", (e) => {
+        if (!lb.classList.contains("open")) return;
+        if (e.key === "Escape") close();
+        if (e.key === "ArrowLeft") show(current - 1);
+        if (e.key === "ArrowRight") show(current + 1);
+      });
+
+      // Swipe on phones
+      let x0 = null;
+      lb.addEventListener("touchstart", (e) => (x0 = e.touches[0].clientX), { passive: true });
+      lb.addEventListener("touchend", (e) => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+        x0 = null;
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Book Your Session | VTS INK</title>
+  <meta name="description" content="Book a tattoo session with Ben at VTS INK.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Bebas+Neue&family=Permanent+Marker&family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="underlay" aria-hidden="true"></div>
+  <div class="tags" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand-tag" href="index.html">VTS INK</a>
+    <nav>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="book.html" aria-current="page">Book</a>
+    </nav>
+  </header>
+
+  <main>
+    <header class="page-head">
+      <h1>Book With Ben</h1>
+      <p>Fill this out start to finish: your info, your idea, the days that work for you, and the release form. Ben reviews every request personally and will reach out to confirm your date and deposit. Please allow up to a week for a reply.</p>
+    </header>
+
+    <div class="booking">
+      <ol class="progress" id="progress">
+        <li class="active"><span class="dot">1</span><span class="name">Contact</span></li>
+        <li><span class="dot">2</span><span class="name">Your Tattoo</span></li>
+        <li><span class="dot">3</span><span class="name">Pick a Date</span></li>
+        <li><span class="dot">4</span><span class="name">Waiver</span></li>
+        <li><span class="dot">5</span><span class="name">Submit</span></li>
+      </ol>
+
+      <form class="panel" id="booking-form" novalidate>
+
+        <!-- ================= STEP 1: CONTACT ================= -->
+        <section class="step active" data-step="0" data-title="Contact Info" aria-labelledby="s1-title">
+          <h2 id="s1-title" tabindex="-1">Who's Getting Inked?</h2>
+          <p class="sub">So Ben knows who you are and how to reach you.</p>
+
+          <div class="row">
+            <div class="field">
+              <label class="req" for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" data-label="First Name" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label class="req" for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" data-label="Last Name" autocomplete="family-name" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label class="req" for="email">Email</label>
+              <input type="email" id="email" name="email" data-label="Email" autocomplete="email" inputmode="email" required>
+            </div>
+            <div class="field">
+              <label class="req" for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" data-label="Phone" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required>
+            </div>
+          </div>
+
+          <fieldset class="field" data-label="Best Way to Reach You" data-required-group>
+            <legend class="req">Best Way to Reach You</legend>
+            <div class="checks cols">
+              <label class="check"><input type="radio" name="contactPref" value="Text"> Text</label>
+              <label class="check"><input type="radio" name="contactPref" value="Call"> Call</label>
+              <label class="check"><input type="radio" name="contactPref" value="Email"> Email</label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label class="req" for="address">Street Address</label>
+            <input type="text" id="address" name="address" data-label="Address" autocomplete="street-address" required>
+          </div>
+          <div class="row-3">
+            <div class="field">
+              <label class="req" for="city">City</label>
+              <input type="text" id="city" name="city" data-label="City" autocomplete="address-level2" required>
+            </div>
+            <div class="field">
+              <label class="req" for="state">State</label>
+              <input type="text" id="state" name="state" data-label="State" autocomplete="address-level1" maxlength="20" required>
+            </div>
+            <div class="field">
+              <label class="req" for="zip">Zip</label>
+              <input type="text" id="zip" name="zip" data-label="Zip Code" autocomplete="postal-code" inputmode="numeric" maxlength="10" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label class="req" for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" data-label="Date of Birth" autocomplete="bday" required>
+            </div>
+            <div class="field">
+              <label for="age">Age</label>
+              <input type="text" id="age" name="age" data-label="Age" readonly tabindex="-1" placeholder="Fills in from birthday">
+            </div>
+          </div>
+          <p class="block-msg" id="under18-msg">Sorry, no one under 18 will be tattooed. Come back and see Ben when you're 18!</p>
+
+          <div class="field">
+            <label for="heardFrom">How'd You Hear About Ben?</label>
+            <input type="text" id="heardFrom" name="heardFrom" data-label="Heard About Ben From" placeholder="Instagram, a friend, saw his work...">
+          </div>
+        </section>
+
+        <!-- ================= STEP 2: THE TATTOO ================= -->
+        <section class="step" data-step="1" data-title="The Tattoo" aria-labelledby="s2-title">
+          <h2 id="s2-title" tabindex="-1">Tell Ben The Idea</h2>
+          <p class="sub">The more detail you give, the better the design. Don't stress about getting it perfect.</p>
+
+          <fieldset class="field" data-label="About You">
+            <legend>Check Any That Apply</legend>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="clientType" value="First tattoo ever"> This is my first tattoo... like, ever</label>
+              <label class="check"><input type="checkbox" name="clientType" value="First tattoo with Ben"> This is my first tattoo with Ben</label>
+              <label class="check"><input type="checkbox" name="clientType" value="Returning client"> I've been tattooed by Ben before</label>
+              <label class="check"><input type="checkbox" name="clientType" value="Continuing a piece Ben started"> I'm finishing a piece Ben started</label>
+              <label class="check"><input type="checkbox" name="clientType" value="Cover-up / rework"> This is a cover-up or rework of an old tattoo</label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label class="req" for="placement">Placement</label>
+            <span class="hint">Where's it going? Forearm, calf, chest, back, ribs...</span>
+            <input type="text" id="placement" name="placement" data-label="Placement" required>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label class="req" for="size">Approximate Size</label>
+              <select id="size" name="size" data-label="Size" required>
+                <option value="">Choose one...</option>
+                <option>Small (under 3")</option>
+                <option>Medium (3"&ndash;6")</option>
+                <option>Large (6"&ndash;10")</option>
+                <option>Extra large (10"+)</option>
+                <option>Half sleeve</option>
+                <option>Full sleeve</option>
+                <option>Back / chest piece</option>
+                <option>Not sure, let Ben decide</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="budget">Budget</label>
+              <input type="text" id="budget" name="budget" data-label="Budget" placeholder="Have a number in mind? No budget?">
+            </div>
+          </div>
+
+          <fieldset class="field" data-label="Color" data-required-group>
+            <legend class="req">Color or Black &amp; Grey?</legend>
+            <div class="checks cols">
+              <label class="check"><input type="radio" name="color" value="Black & grey"> Black &amp; grey</label>
+              <label class="check"><input type="radio" name="color" value="Full color"> Full color</label>
+              <label class="check"><input type="radio" name="color" value="Ben's call"> Ben's call</label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label class="req" for="description">Describe Your Tattoo Idea</label>
+            <span class="hint">Subject, mood, style, anything that has to be in it, anything you definitely don't want.</span>
+            <textarea id="description" name="description" data-label="Tattoo Idea" rows="6" required></textarea>
+          </div>
+
+          <div class="field" data-upload-field="area">
+            <span class="label">Photos of the Area</span>
+            <span class="hint">Shoot a few angles of the spot, with a ruler or tape measure in frame for scale. Include any existing tattoo if it's a cover-up.</span>
+            <label class="upload" data-drop="area">
+              <input type="file" id="areaPhotos" accept="image/*,.pdf" multiple data-files="area">
+              <span class="big">+ UPLOAD PHOTOS</span><br>
+              <span class="small">Tap to choose or drag them here &middot; JPG, PNG or PDF</span>
+            </label>
+            <div class="thumbs" data-thumbs="area"></div>
+          </div>
+
+          <div class="field" data-upload-field="ref">
+            <span class="label">Reference Images</span>
+            <span class="hint">Pics that show the vibe: other art, photos, sketches, pieces you like.</span>
+            <label class="upload" data-drop="ref">
+              <input type="file" id="refPhotos" accept="image/*,.pdf" multiple data-files="ref">
+              <span class="big">+ UPLOAD REFERENCES</span><br>
+              <span class="small">Tap to choose or drag them here &middot; JPG, PNG or PDF</span>
+            </label>
+            <div class="thumbs" data-thumbs="ref"></div>
+          </div>
+          <p class="hint" id="no-upload-note" hidden>Photo uploads aren't switched on yet. Ben will ask for your photos when he gets back to you.</p>
+
+          <fieldset class="field" data-label="Deposit Policy" data-required-group data-msg="Please agree to the deposit policy.">
+            <legend class="req">Deposit Policy</legend>
+            <div class="policy"><ul id="policy-list"></ul></div>
+            <label class="check"><input type="checkbox" name="policyAgree" value="Agreed"> I've read and agree to the deposit policy above.</label>
+          </fieldset>
+        </section>
+
+        <!-- ================= STEP 3: CALENDAR ================= -->
+        <section class="step" data-step="2" data-title="Requested Dates" aria-labelledby="s3-title">
+          <h2 id="s3-title" tabindex="-1">Pick Your Days</h2>
+          <p class="sub">Tap up to 3 days that work for you, in order of preference. Greyed-out days aren't available. Your date is locked in once Ben confirms it and your deposit is paid.</p>
+
+          <div class="cal-wrap">
+            <div class="calendar" id="calendar" data-field="dates">
+              <div class="cal-head">
+                <button type="button" class="cal-nav" id="cal-prev" aria-label="Previous month">&lsaquo;</button>
+                <h3 id="cal-month" aria-live="polite"></h3>
+                <button type="button" class="cal-nav" id="cal-next" aria-label="Next month">&rsaquo;</button>
+              </div>
+              <div class="cal-grid" id="cal-grid"></div>
+              <div class="cal-legend">
+                <span><i style="background:#181818;border:1px solid #444"></i>Open</span>
+                <span><i style="background:var(--lime)"></i>Your pick</span>
+                <span><i style="background:transparent;border:1px solid #333"></i>Unavailable</span>
+              </div>
+              <div class="cal-status" id="cal-status" aria-live="polite"></div>
+            </div>
+
+            <div>
+              <span class="label req">Your Picks</span>
+              <ul class="picks" id="picks"></ul>
+
+              <fieldset class="field" data-label="Time of Day" data-required-group>
+                <legend class="req">Time of Day</legend>
+                <div class="checks" id="tod"></div>
+              </fieldset>
+
+              <label class="check"><input type="checkbox" name="shortNotice" data-label="Short Notice" value="Yes, can come in on short notice"> Text me if something opens up last minute</label>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= STEP 4: WAIVER ================= -->
+        <section class="step" data-step="3" data-title="Medical & Tattoo Release" aria-labelledby="s4-title">
+          <h2 id="s4-title" tabindex="-1">The Release Form</h2>
+          <div class="waiver-head">
+            <div>
+              <div class="shop" data-shop-name>Untamed Tattoos</div>
+              <div class="doc">Medical &amp; Tattoo Release Form</div>
+            </div>
+            <div class="artist">Procedure done by: Ben</div>
+          </div>
+          <span class="notice-18">No one under 18 will be tattooed here!</span>
+
+          <div class="who" id="who"></div>
+
+          <fieldset class="field" data-label="Medical Conditions" data-required-group data-msg="Check any conditions that apply, or check &quot;None of these&quot;.">
+            <legend class="req">Check Any Conditions That Apply To You</legend>
+            <div class="checks cols" id="conditions">
+              <label class="check"><input type="checkbox" name="conditions" value="Heart disease"> Heart disease</label>
+              <label class="check"><input type="checkbox" name="conditions" value="Diabetes"> Diabetes</label>
+              <label class="check"><input type="checkbox" name="conditions" value="Epilepsy"> Epilepsy</label>
+              <label class="check"><input type="checkbox" name="conditions" value="HIV/AIDS"> HIV / AIDS</label>
+              <label class="check"><input type="checkbox" name="conditions" value="Hepatitis"> Hepatitis</label>
+              <label class="check"><input type="checkbox" name="conditions" value="High blood pressure"> High blood pressure</label>
+              <label class="check"><input type="checkbox" name="conditions" value="Pregnant"> Pregnant</label>
+              <label class="check"><input type="checkbox" name="conditions" value="None of these" data-none> None of these</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field" data-label="Health Questions">
+            <legend class="req">Answer Yes or No</legend>
+            <span class="hint">Answer for today. You'll confirm again on the day of your appointment.</span>
+            <div id="yn-list"></div>
+            <p class="block-msg" id="not18-msg">You must be 18 or older to be tattooed at Untamed Tattoos.</p>
+          </fieldset>
+
+          <div class="field" id="otherSpecify-field" hidden>
+            <label class="req" for="otherSpecify">Please Specify</label>
+            <textarea id="otherSpecify" name="otherSpecify" data-label="Other Conditions (details)" rows="3"></textarea>
+          </div>
+
+          <fieldset class="field" data-label="Acknowledgments">
+            <legend class="req">Check Each Box To Agree</legend>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="ack" data-ack value="Not responsible for body's reaction"> I understand the tattoo artist cannot be held responsible if my body reacts to the tattoo application.</label>
+              <label class="check"><input type="checkbox" name="ack" data-ack value="Suggestions are not medical advice"> I understand that the artist's suggestions are not to be confused with medical advice.</label>
+              <label class="check"><input type="checkbox" name="ack" data-ack value="Responsible for aftercare"> I understand that I am fully responsible for the entire aftercare of my tattoo.</label>
+              <label class="check"><input type="checkbox" name="ack" data-ack value="Sterile / single-use equipment"> I understand only sterile / single-use equipment will be used during the procedure.</label>
+              <label class="check"><input type="checkbox" name="ack" data-ack value="Mistakes from moving not artist's fault"> I understand any mistakes made due to my moving during the procedure are not the responsibility of the artist.</label>
+            </div>
+          </fieldset>
+
+          <div class="field" id="sig-field">
+            <span class="label req">Signature</span>
+            <span class="hint">Sign with your finger or mouse.</span>
+            <div class="sig-pad" id="sig-pad">
+              <canvas id="sig-canvas" aria-label="Signature pad"></canvas>
+              <span class="x" aria-hidden="true">&times;</span>
+              <span class="line" aria-hidden="true"></span>
+              <button type="button" class="clear" id="sig-clear">CLEAR</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label class="req" for="sigName">Type Your Full Name</label>
+              <input type="text" id="sigName" name="sigName" data-label="Signed Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="sigDate">Date</label>
+              <input type="text" id="sigDate" name="sigDate" data-label="Date Signed" readonly tabindex="-1">
+            </div>
+          </div>
+          <p class="hint">All aftercare instructions, along with recommended products to use, will be given by your artist.</p>
+        </section>
+
+        <!-- ================= STEP 5: REVIEW ================= -->
+        <section class="step" data-step="4" data-title="Review" aria-labelledby="s5-title">
+          <h2 id="s5-title" tabindex="-1">Look It Over</h2>
+          <p class="sub">Double-check everything, then send it to Ben.</p>
+          <div id="review"></div>
+        </section>
+
+        <!-- ================= SUCCESS ================= -->
+        <section class="step success" id="success" aria-live="polite">
+          <h2 tabindex="-1">You're On The List!</h2>
+          <p id="success-msg">Your request is in. Ben will look it over and reach out to confirm your date and deposit.</p>
+          <a class="btn btn-ghost" href="index.html"><span>BACK HOME</span></a>
+        </section>
+
+        <div class="errors" id="errors" role="alert" tabindex="-1"></div>
+
+        <div class="step-nav" id="step-nav">
+          <button type="button" class="btn btn-ghost" id="back-btn" hidden><span>&larr; BACK</span></button>
+          <span class="spacer"></span>
+          <button type="button" class="btn" id="next-btn"><span>NEXT &rarr;</span></button>
+          <button type="submit" class="btn" id="submit-btn" hidden><span>SUBMIT TO BEN</span></button>
+        </div>
+      </form>
+
+      <p class="draft-note" id="draft-note">Your answers save on this device as you go (not your photos or signature). <button type="button" id="reset-btn">Start over</button></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span class="brand-tag">VTS INK</span>
+    <p class="footer-shop">Tattooing out of Untamed Tattoo &amp; Piercing<br><a href="https://www.google.com/maps/search/?api=1&query=799+South+Main+St+Bellingham+MA" target="_blank" rel="noopener">799 South Main St, Bellingham, MA</a></p>
+    <div>&copy; <span data-year></span> VTS INK<span data-instagram-wrap> &middot; <a data-instagram href="#" target="_blank" rel="noopener">Instagram</a></span></div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/book.js"></script>
+</body>
+</html>
